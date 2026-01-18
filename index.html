@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Mulya Secure System</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+
+:root{
+  --galaxy1:#05070d;
+  --galaxy2:#0b1a3a;
+}
+
+/* ================= BODY ================= */
+body{
+  height:100vh;
+  overflow:hidden;
+  color:#fff;
+  background:radial-gradient(circle at center,var(--galaxy2),var(--galaxy1));
+  transition:background 4s ease; /* Adjusted to 4s for smoother transition */
+}
+
+/* ================= GALAXY STARS ================= */
+.galaxy{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+    radial-gradient(1px 1px at 80% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 40% 70%, #fff, transparent),
+    radial-gradient(2px 2px at 60% 50%, #fff, transparent),
+    radial-gradient(1px 1px at 90% 80%, #fff, transparent);
+  z-index:0;
+}
+
+/* ================= METEOR ================= */
+.meteor{
+  position:absolute;
+  top:-20%;
+  width:2px;
+  height:120px;
+  background:linear-gradient(180deg, rgba(255,255,255,.9), transparent);
+  animation:meteor 3s linear infinite;
+  opacity:.7;
+  transform-origin: top;
+}
+
+.meteor:nth-child(1){left:25%;animation-delay:0s; animation-duration: 2.5s;}
+.meteor:nth-child(2){left:55%;animation-delay:1.3s; animation-duration: 3.5s;}
+.meteor:nth-child(3){left:80%;animation-delay:2.4s; animation-duration: 4s;}
+.meteor:nth-child(4){left:10%;animation-delay:0.8s; animation-duration: 3s; transform: rotate(15deg);}
+.meteor:nth-child(5){left:70%;animation-delay:1.8s; animation-duration: 2.8s; transform: rotate(-10deg);}
+.meteor:nth-child(6){left:40%;animation-delay:2.8s; animation-duration: 3.2s; transform: rotate(5deg);}
+
+@keyframes meteor{
+  0%{transform:translateY(0) scale(1);opacity:0}
+  10%{opacity:1; transform: scale(1.2);}
+  50%{transform:translateY(60vh) scale(1);opacity:0.8}
+  100%{transform:translateY(120vh) scale(0.5);opacity:0}
+}
+
+/* ================= FIREWORK ROCKET ================= */
+.firework-rocket{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:#fff;
+  border-radius:50%;
+  z-index:1;
+  animation:launch linear forwards;
+  box-shadow: 0 0 6px #fff;
+}
+
+/* Launch animation: rocket travels upward or diagonally */
+@keyframes launch{
+  to{
+    transform:translate(var(--dx), var(--dy));
+  }
+}
+
+/* ================= FIREWORK SPARK ================= */
+.firework-spark{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  z-index:2;
+  animation:spark-explode ease-out forwards;
+  /* Glow effect using box-shadow */
+  box-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
+}
+
+/* Spark explosion: radial spread with random velocity, fade, and scale decay */
+@keyframes spark-explode{
+  from{
+    transform:translate(0,0) scale(1);
+    opacity:1;
+  }
+  to{
+    transform:translate(var(--sx), var(--sy)) scale(0.1);
+    opacity:0;
+  }
+}
+
+/* ================= DASHBOARD MENU ================= */
+.menu{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:3;
+}
+
+.menu-panel{
+  background:rgba(10,15,35,.75);
+  backdrop-filter:blur(10px);
+  padding:40px 46px;
+  border-radius:16px;
+  box-shadow:0 0 60px rgba(140,180,255,.35);
+  text-align:center;
+  min-width:340px;
+}
+
+/* Ensure menu is always on top and not overlapped */
+.menu-panel{
+  position:relative;
+  z-index:10;
+}
+
+.menu-panel h2{
+  color:#b6ccff;
+  margin-bottom:26px;
+}
+
+.menu-panel a{
+  display:block;
+  text-decoration:none;
+  margin:12px 0;
+  padding:16px;
+  border-radius:10px;
+  font-weight:bold;
+  color:#0b0e14;
+  background:linear-gradient(135deg,#b6ccff,#6f9cff);
+}
+
+/* ================= FOOTER ================= */
+footer{
+  position:absolute;
+  bottom:12px;
+  width:100%;
+  text-align:center;
+  font-size:12px;
+  color:#7d8bb3;
+  z-index:5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="galaxy">
+  <div class="meteor"></div>
+  <div class="meteor"></div>
+  <div class="meteor"></div>
+  <div class="meteor"></div>
+  <div class="meteor"></div>
+  <div class="meteor"></div>
+</div>
+
+<!-- MENU -->
+<div class="menu">
+  <div class="menu-panel">
+    <h2>Menu Utama</h2>
+    <a href="https://mulyadhialawihisyam-design.github.io/Monitoring-Complain/" target="_blank">
+      Monitoring Complain
+    </a>
+    <a href="https://mulyadhialawihisyam-design.github.io/dashboard-complain/" target="_blank">
+      Detail Complain per Tahun
+    </a>
+    <a href="https://mulyadhialawihisyam-design.github.io/kpi-productivity-cases/" target="_blank">
+      Productivity & Ringkasan Complain
+    </a>
+  </div>
+</div>
+
+<footer>Created by Mulya.id</footer>
+
+<script>
+// Galaxy background colors: Blue, Purple, Cyan, Deep Red, Indigo
+const galaxyColors = [
+  {galaxy1: "#05070d", galaxy2: "#0b1a3a"}, // Blue
+  {galaxy1: "#0a061a", galaxy2: "#2b1055"}, // Purple
+  {galaxy1: "#020b12", galaxy2: "#004e92"}, // Cyan
+  {galaxy1: "#120404", galaxy2: "#3a0f0f"}, // Deep Red
+  {galaxy1: "#1a1a2e", galaxy2: "#16213e"}  // Indigo
+];
+
+let colorIndex = 0;
+let colorChangedThisCycle = false; // Flag to ensure color changes only once per cycle when fireworks explode
+
+// Function to change galaxy background color smoothly
+function changeGalaxyColor() {
+  colorIndex = (colorIndex + 1) % galaxyColors.length;
+  const colors = galaxyColors[colorIndex];
+  document.documentElement.style.setProperty("--galaxy1", colors.galaxy1);
+  document.documentElement.style.setProperty("--galaxy2", colors.galaxy2);
+}
+
+// Function to generate random position in safe zones (avoiding central menu area)
+// Zones: Top, Bottom, Left, Right (10%-30% from edges, avoiding 40%-60% center)
+function getRandomSpawnPosition() {
+  const zones = ['top', 'bottom', 'left', 'right'];
+  const zone = zones[Math.floor(Math.random() * zones.length)];
+  let left, top;
+
+  switch (zone) {
+    case 'top':
+      left = Math.random() * 80 + 10; // 10% to 90%
+      top = Math.random() * 20 + 10; // 10% to 30%
+      break;
+    case 'bottom':
+      left = Math.random() * 80 + 10;
+      top = Math.random() * 20 + 70; // 70% to 90%
+      break;
+    case 'left':
+      left = Math.random() * 20 + 10; // 10% to 30%
+      top = Math.random() * 80 + 10;
+      break;
+    case 'right':
+      left = Math.random() * 20 + 70; // 70% to 90%
+      top = Math.random() * 80 + 10;
+      break;
+  }
+
+  // Ensure not in central 40%-60% area (rough menu avoidance)
+  if (left > 40 && left < 60 && top > 40 && top < 60) {
+    return getRandomSpawnPosition(); // Recurse if in center
+  }
+
+  return { left: left + '%', top: top + '%' };
+}
+
+// Function to create a single firework
+function createFirework(explodeTime) {
+  const startPos = getRandomSpawnPosition();
+  const endHeight = Math.random() * 40 + 30; // Explosion height: 30% to 70% from bottom
+  const launchDuration = Math.random() * 1.5 + 1; // 1-2.5s launch
+  const diagonalOffset = (Math.random() - 0.5) * 20; // Slight diagonal (-10% to 10%)
+
+  // Create rocket element
+  const rocket = document.createElement('div');
+  rocket.className = 'firework-rocket';
+  rocket.style.left = startPos.left;
+  rocket.style.top = startPos.top;
+  rocket.style.setProperty('--dx', diagonalOffset + '%');
+  rocket.style.setProperty('--dy', '-' + endHeight + '%');
+  rocket.style.animationDuration = launchDuration + 's';
+  document.body.appendChild(rocket);
+
+  // Schedule explosion at the same time for all fireworks (±200ms tolerance)
+  setTimeout(() => {
+    rocket.remove();
+    explodeFirework(startPos.left, startPos.top, endHeight, diagonalOffset);
+  }, explodeTime * 1000);
+}
+
+// Function to explode a firework into sparks
+function explodeFirework(startLeft, startTop, height, offset) {
+  // Change background color when fireworks explode (only once per cycle)
+  if (!colorChangedThisCycle) {
+    changeGalaxyColor();
+    colorChangedThisCycle = true;
+  }
+
+  const numSparks = Math.floor(Math.random() * 60) + 60; // 60-120 sparks
+  const explosionX = parseFloat(startLeft) + offset;
+  const explosionY = parseFloat(startTop) - height;
+
+  for (let i = 0; i < numSparks; i++) {
+    const spark = document.createElement('div');
+    spark.className = 'firework-spark';
+
+    // Random HSL color for full spectrum
+    const hue = Math.random() * 360;
+    const saturation = 80 + Math.random() * 20; // 80-100%
+    const lightness = 50 + Math.random() * 30; // 50-80%
+    spark.style.color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    spark.style.backgroundColor = spark.style.color;
+
+    // Position at explosion point
+    spark.style.left = explosionX + '%';
+    spark.style.top = explosionY + '%';
+
+    // Random radial spread (360°)
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = Math.random() * 200 + 50; // 50-250px spread
+    const sx = Math.cos(angle) * distance;
+    const sy = Math.sin(angle) * distance;
+    spark.style.setProperty('--sx', sx + 'px');
+    spark.style.setProperty('--sy', sy + 'px');
+
+    // Random animation duration for organic feel
+    const duration = Math.random() * 1.5 + 1; // 1-2.5s
+    spark.style.animationDuration = duration + 's';
+
+    document.body.appendChild(spark);
+
+    // Remove spark after animation
+    setTimeout(() => spark.remove(), duration * 1000);
+  }
+}
+
+// Main firework cycle: 3-6 fireworks per cycle, explode simultaneously, then change color at explosion
+function startFireworkCycle() {
+  colorChangedThisCycle = false; // Reset flag for new cycle
+  const numFireworks = Math.floor(Math.random() * 4) + 3; // 3-6
+  const explodeTime = 2; // All explode at 2s (±200ms tolerance via random launch)
+
+  for (let i = 0; i < numFireworks; i++) {
+    createFirework(explodeTime);
+  }
+}
+
+// Start the cycle every 15 seconds
+setInterval(startFireworkCycle, 15000);
+
+// Initial cycle
+startFireworkCycle();
+</script>
+
+</body>
+</html>
